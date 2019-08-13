@@ -1,7 +1,7 @@
 # React CRUD App using Material Ui
 
 # Prerequisite
--Nodejs v10+
+- Nodejs v10+
 
 ## Getting Started
 ```
@@ -14,8 +14,8 @@ npm install or yarn install
 npm start or yarn start
 ```
 # Libraries used 
--Reactjs
--@material-ui/core
--@material-ui/icons
--Babel
--ESLint
+- Reactjs
+- @material-ui/core
+- @material-ui/icons
+- Babel
+- ESLint
