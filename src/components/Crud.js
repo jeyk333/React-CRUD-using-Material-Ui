@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Grid } from "@material-ui/core";
-import CreateData from "./CreateData.js";
-import DataLists from "./DataLists.js";
+import React, { Component } from 'react';
+import { Grid } from '@material-ui/core';
+import CreateData from './CreateData.js';
+import DataLists from './DataLists.js';
 
 class Crud extends Component {
   constructor(props) {
@@ -10,40 +10,46 @@ class Crud extends Component {
       dataLists: [
         {
           Id: Math.random(),
-          Name: "Tony Stark",
-          Occupation: "Iron Man",
+          Name: 'Tony Stark',
+          Occupation: 'Iron Man',
           Description:
-            "SuperHero, PlayBoy, Billionaire, Philanthropist, Genious"
+            'SuperHero, PlayBoy, Billionaire, Philanthropist, Genious',
         },
         {
           Id: Math.random(),
-          Name: "Steve Rogers",
-          Occupation: "Captain America",
-          Description: "SuperHero, Captain, Soldier "
+          Name: 'Steve Rogers',
+          Occupation: 'Captain America',
+          Description: 'SuperHero, Captain, Soldier ',
         },
         {
           Id: Math.random(),
-          Name: "Thor",
-          Occupation: "God of Thunder",
-          Description: "SuperHero, God, King"
-        }
+          Name: 'Thor',
+          Occupation: 'God of Thunder',
+          Description: 'SuperHero, God, King',
+        },
+        {
+          Id: Math.random(),
+          Name: 'dffdf',
+          Occupation: 'dfdf of Thunder',
+          Description: 'SuperHsdfdsfero, God, King',
+        },
       ],
       Id: null,
-      Name: "",
-      Occupation: "",
-      Description: "",
-      isEditing: false
+      Name: '',
+      Occupation: '',
+      Description: '',
+      isEditing: false,
     };
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   //To add data to the dataList array
-  addData = e => {
+  addData = (e) => {
     e.preventDefault();
     const { Name, Occupation, Description } = this.state;
     if (!Name || !Occupation || !Description) return;
@@ -53,11 +59,11 @@ class Crud extends Component {
         Id: Math.random(),
         Name: this.state.Name,
         Occupation: this.state.Occupation,
-        Description: this.state.Description
-      }
+        Description: this.state.Description,
+      },
     ];
     this.setState({
-      dataLists
+      dataLists,
     });
     this.reset();
   };
@@ -65,26 +71,26 @@ class Crud extends Component {
   //To reset the form fields
   reset = () => {
     this.setState({
-      Name: "",
-      Occupation: "",
-      Description: ""
+      Name: '',
+      Occupation: '',
+      Description: '',
     });
   };
 
   //To remove the data from the list
-  removeData = Id => {
-    let dataLists = this.state.dataLists.filter(data => {
+  removeData = (Id) => {
+    let dataLists = this.state.dataLists.filter((data) => {
       return data.Id !== Id;
     });
 
     this.setState({
-      dataLists
+      dataLists,
     });
   };
 
   //To handle the data Update
   handleUpdate = (e, Id) => {
-    const index = this.state.dataLists.findIndex(data => {
+    const index = this.state.dataLists.findIndex((data) => {
       return data.Id === Id;
     });
     const data = Object.assign({}, this.state.dataLists[index]);
@@ -93,18 +99,18 @@ class Crud extends Component {
       Name: data.Name,
       Occupation: data.Occupation,
       Description: data.Description,
-      isEditing: true
+      isEditing: true,
     });
   };
 
   //To save the updated data
   saveUpdate = (e, Id) => {
-    const newData = this.state.dataLists.map(data => {
+    const newData = this.state.dataLists.map((data) => {
       if (data.Id === Id) {
         return {
           Name: this.state.Name,
           Occupation: this.state.Occupation,
-          Description: this.state.Description
+          Description: this.state.Description,
         };
       }
       return data;
@@ -112,7 +118,7 @@ class Crud extends Component {
     this.setState(
       {
         dataLists: newData,
-        isEditing: false
+        isEditing: false,
       },
       () => {
         this.reset();
@@ -121,14 +127,8 @@ class Crud extends Component {
   };
 
   render() {
-    const {
-      dataLists,
-      Id,
-      Name,
-      Occupation,
-      Description,
-      isEditing
-    } = this.state;
+    const { dataLists, Id, Name, Occupation, Description, isEditing } =
+      this.state;
     return (
       <Grid container spacing={0}>
         <Grid item ls={6} md={6} sm={12} xs={12}>
